@@ -1,0 +1,21 @@
+mysql:
+  config: charset=utf8&parseTime=True&loc=Local
+  db-name: Goproject
+  max-idle-conns: 10
+  max-open-conns: 50
+  password: xxx
+  path: xxx.xxx.xxx.xxx
+  port: 3306
+  username: xxx
+system:
+  env: release
+  port: 8080
+zap:
+  director: log
+  encode-level: LowercaseColorLevelEncoder
+  format: console
+  level: info
+  log-in-console: true
+  prefix: '[First Go App]'
+  show-line: true
+  stacktrace-key: stacktrace
