@@ -11,4 +11,13 @@ type User struct {
 	Password      string         `json:"password" binding:"required"`
 	Email         string         `json:"email"`
 	StudentNumber sql.NullString `gorm:"unique;index"`
+	Records       []Record       `json:"records"`
+}
+
+type Record struct {
+	gorm.Model
+	UserID      uint
+	CardID      uint
+	Card        Card
+	Description string
 }
