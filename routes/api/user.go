@@ -1,7 +1,7 @@
 package api
 
 import (
-	"WebAppStructure/apis"
+	"ToriBackend/apis"
 	"github.com/gin-gonic/gin"
 )
 

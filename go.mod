@@ -1,4 +1,4 @@
-module WebAppStructure
+module ToriBackend
 
 go 1.18
 

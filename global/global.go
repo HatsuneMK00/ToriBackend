@@ -1,7 +1,7 @@
 package global
 
 import (
-	"WebAppStructure/config"
+	"ToriBackend/config"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 	"gorm.io/gorm"

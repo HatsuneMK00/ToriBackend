@@ -1,9 +1,9 @@
 package apis
 
 import (
-	"WebAppStructure/entity"
-	"WebAppStructure/entity/response"
-	"WebAppStructure/global"
+	"ToriBackend/entity"
+	"ToriBackend/entity/response"
+	"ToriBackend/global"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"

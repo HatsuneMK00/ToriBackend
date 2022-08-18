@@ -1,11 +1,11 @@
 package main
 
 import (
-	"WebAppStructure/core"
-	"WebAppStructure/env"
-	"WebAppStructure/global"
-	"WebAppStructure/middlewares"
-	"WebAppStructure/routes"
+	"ToriBackend/core"
+	"ToriBackend/env"
+	"ToriBackend/global"
+	"ToriBackend/middlewares"
+	"ToriBackend/routes"
 	"github.com/gin-gonic/gin"
 )
 

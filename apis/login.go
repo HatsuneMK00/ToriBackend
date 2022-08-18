@@ -1,7 +1,7 @@
 package apis
 
 import (
-	"WebAppStructure/entity"
+	"ToriBackend/entity"
 )
 
 type LoginApi interface {

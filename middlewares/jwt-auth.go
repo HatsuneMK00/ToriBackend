@@ -1,9 +1,9 @@
 package middlewares
 
 import (
-	"WebAppStructure/entity"
-	"WebAppStructure/entity/request"
-	"WebAppStructure/global"
+	"ToriBackend/entity"
+	"ToriBackend/entity/request"
+	"ToriBackend/global"
 	"database/sql"
 	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"

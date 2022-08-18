@@ -1,8 +1,8 @@
 package core
 
 import (
-	"WebAppStructure/entity"
-	"WebAppStructure/global"
+	"ToriBackend/entity"
+	"ToriBackend/global"
 	"fmt"
 	"go.uber.org/zap"
 	"gorm.io/driver/mysql"

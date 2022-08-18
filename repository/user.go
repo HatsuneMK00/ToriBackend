@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"WebAppStructure/entity"
-	"WebAppStructure/global"
+	"ToriBackend/entity"
+	"ToriBackend/global"
 	"gorm.io/gorm"
 )
 

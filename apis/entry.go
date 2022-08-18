@@ -1,6 +1,6 @@
 package apis
 
-import "WebAppStructure/services"
+import "ToriBackend/services"
 
 type ApiGroup struct {
 	Login LoginApi

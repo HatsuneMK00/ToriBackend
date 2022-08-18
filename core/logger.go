@@ -1,7 +1,7 @@
 package core
 
 import (
-	"WebAppStructure/global"
+	"ToriBackend/global"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -19,7 +19,7 @@ func InitZapLogger(env string) *zap.Logger {
 func initZapFile() *zap.Logger {
 	w := zapcore.AddSync(&lumberjack.Logger{
 		// todo change to server path when deploying
-		Filename:   "/Users/makise/GolandProjects/WebAppStructure/log/app.log",
+		Filename:   "/Users/makise/GolandProjects/ToriBackend/log/app.log",
 		MaxSize:    300, // MB
 		MaxBackups: 3,   // max file num to keep
 		MaxAge:     31,  // all file older than max age would be deleted, despite max backups

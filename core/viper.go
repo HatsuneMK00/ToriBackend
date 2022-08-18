@@ -1,7 +1,7 @@
 package core
 
 import (
-	"WebAppStructure/global"
+	"ToriBackend/global"
 	"flag"
 	"fmt"
 	"github.com/fsnotify/fsnotify"
