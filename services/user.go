@@ -10,6 +10,7 @@ type UserService interface {
 	FindUser(id uint) (*entity.User, bool)
 	FindUsersWithOffset(offset int) ([]entity.User, bool)
 	AddUser(user *entity.User) (*entity.User, int64)
+	DeleteUser(id uint) int64
 }
 
 type userService struct{}
@@ -44,4 +45,12 @@ func (s userService) FindUser(id uint) (*entity.User, bool) {
 		ok = false
 	}
 	return &user, ok
+}
+
+func (s userService) DeleteUser(id uint) int64 {
+	result := global.MysqlDB.Delete(&entity.User{}, id)
+	if result.Error != nil {
+		global.Logger.Errorf("%v", result.Error)
+	}
+	return result.RowsAffected
 }

@@ -90,6 +90,25 @@ func (api userApi) UpdateUser(c *gin.Context) {
 }
 
 func (api userApi) DeleteUser(c *gin.Context) {
-	//TODO implement me
-	panic("implement me")
+	userId := c.Param("id")
+	id, err := strconv.Atoi(userId)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, response.Response{
+			Code:    http.StatusBadRequest,
+			Message: "user id needs to be uint",
+		})
+		return
+	}
+	if rowAffected := userService.DeleteUser(uint(id)); rowAffected > 0 {
+		c.JSON(http.StatusOK, response.Response{
+			Code:    http.StatusOK,
+			Message: "",
+		})
+		global.Logger.Infof("delete user: %v", id)
+	} else {
+		c.JSON(http.StatusOK, response.Response{
+			Code:    500,
+			Message: "unable to delete user",
+		})
+	}
 }
