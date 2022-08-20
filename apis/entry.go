@@ -3,19 +3,22 @@ package apis
 import "ToriBackend/services"
 
 type ApiGroup struct {
-	Login LoginApi
-	User  UserApi
-	Card  CardApi
+	Login  LoginApi
+	User   UserApi
+	Card   CardApi
+	Record RecordApi
 }
 
 var (
-	loginService = services.ServiceGroupApp.Login
-	userService  = services.ServiceGroupApp.User
-	cardService  = services.ServiceGroupApp.Card
+	loginService  = services.ServiceGroupApp.Login
+	userService   = services.ServiceGroupApp.User
+	cardService   = services.ServiceGroupApp.Card
+	recordService = services.ServiceGroupApp.Record
 )
 
 var ApiGroupApp = ApiGroup{
-	Login: loginApi{},
-	User:  userApi{},
-	Card:  cardApi{},
+	Login:  loginApi{},
+	User:   userApi{},
+	Card:   cardApi{},
+	Record: recordApi{},
 }
