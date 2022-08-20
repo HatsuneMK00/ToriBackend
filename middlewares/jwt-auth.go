@@ -4,7 +4,6 @@ import (
 	"ToriBackend/entity"
 	"ToriBackend/entity/request"
 	"ToriBackend/global"
-	"database/sql"
 	jwt "github.com/appleboy/gin-jwt/v2"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -24,7 +23,7 @@ func InitJWTAuth() *jwt.GinJWTMiddleware {
 				return jwt.MapClaims{
 					jwt.IdentityKey: v.ID,
 					"username":      v.Username,
-					"student_name":  v.StudentNumber,
+					"birthday":      v.Birthday,
 					"email":         v.Email,
 				}
 			}
@@ -40,11 +39,11 @@ func InitJWTAuth() *jwt.GinJWTMiddleware {
 
 			if userName == "admin" && password == "123" {
 				user := entity.User{
-					Model:         gorm.Model{ID: 123},
-					Username:      "admin",
-					Password:      "123",
-					Email:         "email@email.com",
-					StudentNumber: sql.NullString{String: "123"},
+					Model:    gorm.Model{ID: 123},
+					Username: "admin",
+					Password: "123",
+					Email:    "email@email.com",
+					Birthday: time.Date(1999, time.January, 9, 0, 0, 0, 0, time.FixedZone("Asia/Shanghai", 8*60*60)),
 				}
 				return &user, nil
 			}

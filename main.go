@@ -39,11 +39,12 @@ func main() {
 	publicGroup := router.Group("")
 	{
 		authEndpoints.AddAuthRoutes(publicGroup, authJWT)
+		apiEndpointGroup.AddApiRoutes(publicGroup)
 	}
 	privateGroup := router.Group("")
 	privateGroup.Use(authJWT.MiddlewareFunc())
 	{
-		apiEndpointGroup.AddApiRoutes(privateGroup)
+		//apiEndpointGroup.AddApiRoutes(privateGroup)
 	}
 
 	router.Run(":8080")
