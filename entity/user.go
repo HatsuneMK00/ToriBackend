@@ -10,6 +10,7 @@ type User struct {
 	Username string    `json:"username" binding:"required"`
 	Password string    `json:"password" binding:"required"`
 	Email    string    `json:"email"`
+	Motto    string    `json:"motto"`
 	Birthday time.Time `json:"birthday"`
 	Records  []Record  `json:"records"`
 }
