@@ -28,9 +28,14 @@ func InitMysqlDB() *gorm.DB {
 }
 
 func RegisterTables(db *gorm.DB) {
-	err := db.AutoMigrate(&entity.User{}, &entity.CardPack{}, &entity.Card{}, &entity.Record{})
+	err := db.AutoMigrate(&entity.User{}, &entity.CardPack{}, &entity.Card{}, &entity.Record{}, &entity.Course{}, &entity.UserCourse{})
 	if err != nil {
 		global.Logger.Errorf("Database: RegisterTables failed, err: %v", zap.Error(err))
+		os.Exit(0)
+	}
+	err = db.SetupJoinTable(&entity.User{}, "Courses", &entity.UserCourse{})
+	if err != nil {
+		global.Logger.Errorf("Database: setup join table failed, err: %v", zap.Error(err))
 		os.Exit(0)
 	}
 	global.Logger.Info("Database: Register table successfully")

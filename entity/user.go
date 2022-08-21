@@ -14,6 +14,7 @@ type User struct {
 	Birthday    time.Time `json:"birthday"`
 	BirthdayStr string    `json:"birthday_str"`
 	Records     []Record  `json:"records"`
+	Courses     []*Course `json:"courses" gorm:"many2many:user_courses;"`
 }
 
 type Record struct {

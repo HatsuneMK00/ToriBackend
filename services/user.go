@@ -38,7 +38,7 @@ func (s userService) FindUser(id uint) (*entity.User, bool) {
 	user := entity.User{
 		Model: gorm.Model{},
 	}
-	result := global.MysqlDB.Model(&user).Preload("Records").First(&user, id)
+	result := global.MysqlDB.Model(&user).Preload("Records").Preload("Courses").First(&user, id)
 	ok := true
 	if result.Error != nil {
 		global.Logger.Errorf("%v", result.Error)

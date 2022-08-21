@@ -6,6 +6,7 @@ type RouterGroup struct {
 	userRouter
 	cardRouter
 	recordRouter
+	courseRouter
 }
 
 func (r RouterGroup) AddApiRoutes(rg *gin.RouterGroup) {
@@ -13,4 +14,5 @@ func (r RouterGroup) AddApiRoutes(rg *gin.RouterGroup) {
 	r.AddUserRoutes(apiGroup)
 	r.AddCardRoutes(apiGroup)
 	r.AddRecordRoutes(apiGroup)
+	r.AddCourseRoutes(apiGroup)
 }
