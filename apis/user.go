@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 type UserApi interface {
@@ -69,9 +70,24 @@ func (api userApi) AddUser(c *gin.Context) {
 	var user entity.User
 	var result *entity.User
 	var rowAffected int64
-	if err := c.ShouldBindJSON(&user); err == nil {
-		result, rowAffected = userService.AddUser(&user)
+	if err := c.ShouldBindJSON(&user); err != nil {
+		c.JSON(http.StatusBadRequest, response.Response{
+			Code:    http.StatusBadRequest,
+			Message: "invalid json",
+		})
+		return
 	}
+	// change birthday format yyyy-mm-dd into time.Time
+	birthday, err := time.Parse("2006-01-02", user.BirthdayStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, response.Response{
+			Code:    http.StatusBadRequest,
+			Message: "invalid birthday",
+		})
+		return
+	}
+	user.Birthday = birthday
+	result, rowAffected = userService.AddUser(&user)
 	if rowAffected > 0 {
 		c.JSON(http.StatusOK, response.Response{
 			Code:    http.StatusOK,
@@ -90,6 +106,25 @@ func (api userApi) UpdateUser(c *gin.Context) {
 }
 
 func (api userApi) DeleteUser(c *gin.Context) {
-	//TODO implement me
-	panic("implement me")
+	userId := c.Param("id")
+	id, err := strconv.Atoi(userId)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, response.Response{
+			Code:    http.StatusBadRequest,
+			Message: "user id needs to be uint",
+		})
+		return
+	}
+	if rowAffected := userService.DeleteUser(uint(id)); rowAffected > 0 {
+		c.JSON(http.StatusOK, response.Response{
+			Code:    http.StatusOK,
+			Message: "",
+		})
+		global.Logger.Infof("delete user: %v", id)
+	} else {
+		c.JSON(http.StatusOK, response.Response{
+			Code:    500,
+			Message: "unable to delete user",
+		})
+	}
 }

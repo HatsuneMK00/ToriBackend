@@ -3,16 +3,25 @@ package apis
 import "ToriBackend/services"
 
 type ApiGroup struct {
-	Login LoginApi
-	User  UserApi
+	User        UserApi
+	Card        CardApi
+	Record      RecordApi
+	Course      CourseApi
+	Achievement AchievementApi
 }
 
 var (
-	loginService = services.ServiceGroupApp.Login
-	userService  = services.ServiceGroupApp.User
+	userService        = services.ServiceGroupApp.User
+	cardService        = services.ServiceGroupApp.Card
+	recordService      = services.ServiceGroupApp.Record
+	courseService      = services.ServiceGroupApp.Course
+	achievementService = services.ServiceGroupApp.Achievement
 )
 
 var ApiGroupApp = ApiGroup{
-	Login: loginApi{},
-	User:  userApi{},
+	User:        userApi{},
+	Card:        cardApi{},
+	Record:      recordApi{},
+	Course:      courseApi{},
+	Achievement: achievementApi{},
 }
