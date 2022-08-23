@@ -18,11 +18,10 @@ func InitZapLogger(env string) *zap.Logger {
 
 func initZapFile() *zap.Logger {
 	w := zapcore.AddSync(&lumberjack.Logger{
-		// todo change to server path when deploying
-		Filename:   "/Users/makise/GolandProjects/ToriBackend/log/app.log",
-		MaxSize:    300, // MB
-		MaxBackups: 3,   // max file num to keep
-		MaxAge:     31,  // all file older than max age would be deleted, despite max backups
+		Filename:   global.Config.Zap.LogFilename, // save log file in the project root directory
+		MaxSize:    300,                           // MB
+		MaxBackups: 3,                             // max file num to keep
+		MaxAge:     31,                            // all file older than max age would be deleted, despite max backups
 	})
 
 	core := zapcore.NewCore(
