@@ -1,25 +1,22 @@
 package core
 
 import (
+	"ToriBackend/env"
 	"ToriBackend/global"
-	"flag"
 	"fmt"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
-	"os"
 )
 
 func InitViper() *viper.Viper {
 	// parse the config file path from command line
 	var configFile string
-	flag.StringVar(&configFile, "configFile", "", "the path of config yaml file")
-	flag.Parse()
-	if configFile == "" { // 优先级：命令行 > 环境变量 > 默认值
-		if envConfigFile := os.Getenv("CONFIG_FILE"); envConfigFile == "" {
-			configFile = "config_debug.yaml"
-		} else {
-			configFile = envConfigFile
-		}
+	if env.Mode == "debug" {
+		configFile = "config_debug.yaml"
+	} else if env.Mode == "release" {
+		configFile = "config_release.yaml"
+	} else {
+		configFile = "config_debug.yaml"
 	}
 
 	v := viper.New()

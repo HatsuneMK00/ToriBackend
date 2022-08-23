@@ -9,4 +9,5 @@ type Zap struct {
 	EncodeLevel   string `json:"encode-level" yaml:"encode-level" mapstructure:"encode-level"`       // 编码级
 	StacktraceKey string `json:"stacktrace-key" yaml:"stacktrace-key" mapstructure:"stacktrace-key"` // 栈名
 	LogInConsole  bool   `json:"log-in-console" yaml:"log-in-console" mapstructure:"log-in-console"` // 输出控制台
+	LogFilename   string `json:"log-filename" yaml:"log-filename" mapstructure:"log-filename"`       // 输出文件
 }

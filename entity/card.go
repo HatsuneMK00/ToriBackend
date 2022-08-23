@@ -4,8 +4,9 @@ import "gorm.io/gorm"
 
 type Card struct {
 	gorm.Model
-	CardPackId uint
-	ImageCover string `json:"image_cover"`
+	CardPackId  uint   `json:"card_pack_id"`
+	Description string `json:"description"`
+	ImageCover  string `json:"image_cover"`
 }
 
 type CardPack struct {
